@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>SafeChecker</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #667eea, #764ba2);
+            color: white;
+            text-align: center;
+            padding: 50px;
+        }
+        input, textarea {
+            padding: 10px;
+            margin: 10px;
+            width: 80%;
+            border: none;
+            border-radius: 5px;
+        }
+        button {
+            padding: 10px 20px;
+            background: #ff4b2b;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #ff416c;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>SafeChecker 🔒</h1>
+
+    <h3>Vérifie un lien :</h3>
+    <input type="text" id="linkInput" placeholder="https://exemple.com"><br>
+
+    <h3>Vérifie un message :</h3>
+    <textarea id="messageInput" placeholder="Écris ou colle ton message ici..."></textarea><br>
+
+    <button onclick="checkContent()">Vérifier</button>
+
+    <p id="result"></p>
+
+    <script>
+        function checkContent() {
+            var link = document.getElementById("linkInput").value;
+            var message = document.getElementById("messageInput").value;
+            var result = document.getElementById("result");
+
+            // Simple démo (à améliorer plus tard)
+            if (link.includes("http")) {
+                result.innerHTML = "✅ Ce lien semble correct.";
+            } else {
+                result.innerHTML = "⚠️ Attention, ce lien peut être douteux !";
+            }
+
+            if (message.toLowerCase().includes("gagne un iphone")) {
+                result.innerHTML += "<br>⚠️ Message suspect détecté : arnaque possible !";
+            }
+        }
+    </script>
+
+</body>
+</html>
